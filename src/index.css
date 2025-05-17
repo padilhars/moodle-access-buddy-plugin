@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 221 83% 53%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -30,24 +31,17 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 221 83% 53%;
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -61,7 +55,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -78,7 +72,8 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 224.3 76.3% 48%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -98,4 +93,180 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Accessibility Plugin Styles */
+@layer components {
+  .a11y-btn {
+    @apply fixed z-50 flex items-center justify-center w-12 h-12 rounded-full shadow-lg bg-primary text-white transition-all duration-200 hover:scale-110;
+  }
+  
+  .a11y-popover {
+    @apply bg-white dark:bg-gray-800 shadow-xl rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700;
+  }
+
+  .a11y-high-contrast {
+    filter: contrast(150%) brightness(120%);
+  }
+
+  .a11y-low-contrast {
+    filter: contrast(80%) brightness(120%);
+  }
+
+  .a11y-dark-mode {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+
+  .a11y-sepia {
+    filter: sepia(100%);
+  }
+
+  .a11y-low-saturation {
+    filter: saturate(50%);
+  }
+
+  .a11y-high-saturation {
+    filter: saturate(150%);
+  }
+
+  .a11y-no-saturation {
+    filter: grayscale(100%);
+  }
+
+  .a11y-font-readable {
+    font-family: Arial, sans-serif;
+  }
+
+  .a11y-font-dyslexic {
+    font-family: "OpenDyslexic", Arial, sans-serif;
+  }
+
+  .a11y-cursor-large-black {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='black'/%3E%3C/svg%3E"), auto;
+  }
+
+  .a11y-cursor-large-white {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='white' stroke='black' stroke-width='1'/%3E%3C/svg%3E"), auto;
+  }
+
+  .a11y-highlight-titles h1, 
+  .a11y-highlight-titles h2, 
+  .a11y-highlight-titles h3, 
+  .a11y-highlight-titles h4, 
+  .a11y-highlight-titles h5, 
+  .a11y-highlight-titles h6 {
+    @apply bg-yellow-200 dark:bg-yellow-800 px-1 py-0.5 rounded;
+  }
+
+  .a11y-highlight-links a {
+    @apply bg-blue-200 dark:bg-blue-800 px-1 py-0.5 rounded;
+  }
+
+  .a11y-highlight-buttons button,
+  .a11y-highlight-buttons [role="button"],
+  .a11y-highlight-buttons .btn {
+    @apply outline outline-2 outline-offset-2 outline-blue-500;
+  }
+
+  .a11y-reading-guide {
+    @apply fixed left-0 right-0 h-[2px] bg-black dark:bg-white z-[9999] pointer-events-none;
+  }
+
+  .a11y-reading-mask {
+    @apply fixed inset-0 bg-black/70 z-[9998] pointer-events-none;
+  }
+
+  .a11y-reading-mask-window {
+    @apply absolute left-0 right-0 h-[100px] bg-transparent;
+  }
+
+  .a11y-hide-images img {
+    @apply opacity-0;
+  }
+
+  .a11y-pause-animations * {
+    animation-play-state: paused !important;
+    transition: none !important;
+  }
+
+  .a11y-option-group {
+    @apply mb-4 px-4 py-2 border-b border-gray-200 dark:border-gray-700 last:border-b-0;
+  }
+
+  .a11y-option-title {
+    @apply text-sm font-medium text-gray-500 dark:text-gray-400 mb-2;
+  }
+
+  .a11y-option-items {
+    @apply grid grid-cols-2 gap-2;
+  }
+
+  .a11y-option-item {
+    @apply flex flex-col items-center justify-center p-2 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-900 cursor-pointer transition-all;
+  }
+
+  .a11y-option-item.active {
+    @apply bg-blue-100 dark:bg-blue-900 border-blue-500;
+  }
+
+  .a11y-option-icon {
+    @apply w-6 h-6 text-gray-600 dark:text-gray-300 mb-1;
+  }
+
+  .a11y-option-label {
+    @apply text-xs text-center text-gray-700 dark:text-gray-300;
+  }
+
+  .a11y-option-state {
+    @apply text-[10px] text-center text-blue-600 dark:text-blue-400 mt-1 h-4;
+  }
+
+  .a11y-indicators {
+    @apply flex justify-center mt-1 gap-1;
+  }
+
+  .a11y-indicator {
+    @apply w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-600;
+  }
+
+  .a11y-indicator.active {
+    @apply bg-blue-600 dark:bg-blue-400;
+  }
+
+  .a11y-switch-container {
+    @apply flex items-center justify-between p-2 rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-900;
+  }
+
+  .a11y-switch-label {
+    @apply flex items-center gap-2;
+  }
+
+  .a11y-slider-container {
+    @apply p-3 rounded-lg border border-gray-200 dark:border-gray-700;
+  }
+
+  .a11y-slider-header {
+    @apply flex items-center justify-between mb-2;
+  }
+
+  .a11y-slider-value {
+    @apply text-xs text-gray-500 dark:text-gray-400;
+  }
+
+  /* Custom slider appearance */
+  .a11y-slider-range {
+    @apply w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full appearance-none cursor-pointer;
+  }
+  
+  .a11y-slider-range::-webkit-slider-thumb {
+    @apply appearance-none w-4 h-4 rounded-full bg-primary border-none;
+  }
+}
+
+/* Import OpenDyslexic font */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('https://cdn.jsdelivr.net/npm/open-dyslexic@1.0.3/open-dyslexic-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
