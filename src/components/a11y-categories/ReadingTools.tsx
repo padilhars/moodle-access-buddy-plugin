@@ -1,5 +1,5 @@
 
-import { Eye, Help, Reading, Volume } from "lucide-react";
+import { BookOpenText, Eye, FileText, Volume } from "lucide-react";
 import SwitchOption from "../a11y-options/SwitchOption";
 import { useA11ySettings } from "../../hooks/useA11ySettings";
 
@@ -12,7 +12,7 @@ const ReadingTools = () => {
       
       <div className="flex flex-col gap-2">
         <SwitchOption
-          icon={<Reading />}
+          icon={<BookOpenText />}
           label="Guia de Leitura"
           checked={settings.options.readingGuide}
           onChange={(checked) => updateToggleOption("readingGuide", checked)}
@@ -30,7 +30,7 @@ const ReadingTools = () => {
           onChange={(checked) => updateToggleOption("screenReader", checked)}
         />
         <SwitchOption
-          icon={<Help />}
+          icon={<FileText />}
           label="Dicas de Ferramentas"
           checked={settings.options.tooltips}
           onChange={(checked) => updateToggleOption("tooltips", checked)}
